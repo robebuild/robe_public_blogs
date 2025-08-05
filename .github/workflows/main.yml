@@ -16,9 +16,8 @@ jobs:
         env:
           TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
         run: |
-          git clone https://robebuild:${TOKEN}@github.com/Robe-ai-flow/content.git temp-content
-          rm -rf blogs
-          mv temp-content/blogs blogs
+          - name: Clone Private Content Repo
+  run: git clone https://x-access-token:${{ secrets.CONTENT_REPO_TOKEN }}@github.com/Robe-ai-flow/content.git temp-content
 
       - name: Commit and push changes
         run: |
